@@ -78,13 +78,10 @@ public class crudV3ObjectDb {
         pedidos = (ArrayList<Pedido>) q.getResultList();
         pedidos.forEach(System.out::println);
         System.out.println("¿Que pedido quieres marcar como recogido?");
-        q = em.createQuery("SELECT p FROM Pedido p where id=:id", Pedido.class);
+        q = em.createQuery("UPDATE Pedido SET estado=true where id=:id", Pedido.class);
 
         int id = sc.nextInt();
-        q.setParameter("id", id);
-        Pedido p = (Pedido) q.getSingleResult();
-        p.setEstado(true);
-        em.persist(p);
+        q.setParameter("id", id).executeUpdate();
         em.getTransaction().commit();
         em.close();
     }
