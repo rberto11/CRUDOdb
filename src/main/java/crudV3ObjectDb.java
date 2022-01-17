@@ -68,7 +68,7 @@ public class crudV3ObjectDb {
         pedidos.forEach(System.out::println);
         em.close();
     }
-//No funciona
+
     private static void marcarRecogido() {
         Scanner sc = new Scanner(System.in);
         EntityManager em = emf.createEntityManager();
